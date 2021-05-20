@@ -32,10 +32,15 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
     kube-system                                        ibm-ocs-operator-controller-manager-55667f4d68-7qfd5              1/1     Running     1          29h
     ```
 
-- Create [custom SC](./custom-sc.yaml) (can copy the yaml of one of the existing SCs. The name of the SC should be less than 63 chars). Refer [IBM Cloud docs - OCS limiations](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-cluster-setup#ocs-limitations)
-
+- Create [custom StorageClass](./custom-sc.yaml) (can copy the yaml of one of the existing SCs. The name of the SC should be less than 63 chars). Refer [IBM Cloud docs - OCS limitations](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-cluster-setup#ocs-limitations)
+   To list existing SCs on the cluster,
+   ```
+   $ oc get sc
+   ```
+   > One of the IBM block storage classes can be used. For MZR clusters, it is recommended to StorageClasses with `volumeBindingMode: WaitForFirstConsumer` 
+   
     For eg:  `ibmc-vpc-block-metro-retain-10iops-tier`  cannot be directly used due to limitation with character length. Instead, create another SC with same spec but a shorter name
-    > For MZR clusters, only use StorageClasses with `volumeBindingMode: WaitForFirstConsumer` 
+  
 
    ```
    apiVersion: storage.k8s.io/v1
