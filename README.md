@@ -12,7 +12,7 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
 
 ### Install OCS
 
-- (Optional) Sets COS to be default backing storage for noobaa. Details [Setting up an IBM Cloud Object Storage service instance](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-install#ocs-create-cos)
+- (Optional) Sets COS to be default backing storage for noobaa. Details - [Setting up an IBM Cloud Object Storage service instance](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-install#ocs-create-cos)
     - Setup COS instance
     - Create HMAC creds
     - Create `openshift-storage` NS, [namespace yaml](./os-namespace.yaml) 
@@ -32,7 +32,7 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
     kube-system                                        ibm-ocs-operator-controller-manager-55667f4d68-7qfd5              1/1     Running     1          29h
     ```
 
-- Create [custom SC](./custom-sc.yaml) (can copy the yaml of one of the existing SCs. The name of the SC should be less than 63 chars). Ref [IBM Cloud docs - OCS limiation](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-cluster-setup#ocs-limitations)
+- Create [custom SC](./custom-sc.yaml) (can copy the yaml of one of the existing SCs. The name of the SC should be less than 63 chars). Refer [IBM Cloud docs - OCS limiations](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-cluster-setup#ocs-limitations)
 
     For eg:  `ibmc-vpc-block-metro-retain-10iops-tier`  cannot be directly used due to limitation with character length. Instead, create another SC with same spec but a shorter name
     > For MZR clusters, only use StorageClasses with `volumeBindingMode: WaitForFirstConsumer` 
@@ -58,6 +58,9 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
    reclaimPolicy: Retain
    volumeBindingMode: WaitForFirstConsumer
   ```
+  ```
+  $ oc create -f custom-oc.yaml
+  ```
 
 - Prepare the `OcsCluster` [CR yaml](./ocs-cluster.yaml) and Create storage cluster
 
@@ -80,6 +83,7 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
     ▶ oc create -f ocs-cluster.yaml 
     ocscluster.ocs.ibm.io/ocscluster-vpc created
     ```
+    > The above example installs OCS componenets on all nodes of the cluster. To install on specific node, refer [Creating your OCS storage cluster CRD](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-cluster-setup#ocs-vpc-deploy-crd)
 
 ### References
 - [IBM Cloud docs - OpenShift Container Storage](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-prep)
