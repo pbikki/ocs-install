@@ -8,13 +8,17 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
 
 ### Preqrequisites
 
-- ROKS VPC cluster with minimum 3 16x64 workers (For HA, create workers in 3 different AZs)
+- Install the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli) and the [Red Hat OpenShift on IBM Cloud plug-in](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cs_cli_install_steps)
+- [Installing the OpenShift Origin CLI (oc)](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cli_oc)
+- ROKS VPC cluster with minimum 3 16x64 workers (For HA, create workers in 3 different AZs). [Create managed OpenShift cluster on VPC infra](https://cloud.ibm.com/docs/openshift?topic=openshift-clusters#clusters_vpcg2)
+- [Login to the openshift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-access_cluster#access_public_se)
+
 
 ### Install OCS
 
-- (Optional) Sets COS to be default backing storage for noobaa. Details - [Setting up an IBM Cloud Object Storage service instance](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-install#ocs-create-cos)
+- (Optional) Sets Cloud Object Storage(COS) to be default backing storage for noobaa. Details - [Setting up an IBM Cloud Object Storage service instance](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-install#ocs-create-cos)
     - Setup COS instance
-    - Create HMAC creds
+    - Create HMAC creds for COS
     - Create `openshift-storage` NS, [namespace yaml](./os-namespace.yaml) 
     - Create `ibm-cloud-cos-creds` COS secret
 
@@ -67,7 +71,7 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
   $ oc create -f custom-oc.yaml
   ```
 
-- Prepare the `OcsCluster` [CR yaml](./ocs-cluster.yaml) and Create storage cluster
+- Prepare the `OcsCluster` [CustomResource yaml](./ocs-cluster.yaml) and Create storage cluster
 
     Example yaml
     ```
