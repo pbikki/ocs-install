@@ -16,13 +16,15 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
 
 ### Install OCS
 
-- (Optional) Sets Cloud Object Storage(COS) to be default backing storage for noobaa. Details - [Setting up an IBM Cloud Object Storage service instance](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-install#ocs-create-cos)
+- (Optional) Sets Cloud Object Storage(COS) to be default backing storage for noobaa. 
     - Setup COS instance
     - Create HMAC creds for COS
     - Create `openshift-storage` NS, [namespace yaml](./os-namespace.yaml) 
-    - Create `ibm-cloud-cos-creds` COS secret
+    - Create `ibm-cloud-cos-creds` COS secret (secret name should be the same, OCS will look for this secret)
+  
+   Refer [Setting up an IBM Cloud Object Storage service instance](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-install#ocs-create-cos) for details and commands to complete the above steps using IBM Cloud CLI 
 
-- Enable OCS add-on. Wait until add-on is enabled and Ready
+- Enable OCS add-on. Wait until add-on is enabled and Ready. Steps below show enabling the add-on using IBM Cloud CLI. IT can also be [enabled through IBM Cloud console](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-install#install-ocs-console)
     ```
     $ ibmcloud oc cluster addon enable openshift-container-storage -c <cluster-name>
 
