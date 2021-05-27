@@ -4,9 +4,9 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
 
 OCS storage cluster has 3 deployment approaches depending on how storage will be made available to the cluster:
 
-- Internal - dynamic storage : OCS dynamically provisions storage using the cloud provider's Storage class and sizes that are specified
-- Internal - attached local devices: In this approach, set of storage devices are attached to worker nodes and local storage operator (LSO) is installed to recognize the disks and make them ready for OCS deployment
-- External - This approach allows OCS to expose the Red Hat Ceph Storage services running outside of the OpenShift cluster as storage classes
+- **Internal - dynamic storage** : OCS dynamically provisions storage using the cloud provider's Storage class and sizes that are specified
+- **Internal - attached local devices**: In this approach, set of storage devices are attached to worker nodes and local storage operator (LSO) is installed to recognize the disks and make them ready for OCS deployment
+- **External** - This approach allows OCS to expose the Red Hat Ceph Storage services running outside of the OpenShift cluster as storage classes
 
 Read more about [storage deployment approaches](https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/planning_your_deployment/ocs-architecture_rhocs#storage-cluster-deployment-approaches_rhocs)
 
