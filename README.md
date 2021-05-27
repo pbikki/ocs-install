@@ -2,6 +2,16 @@
 
 Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of cloud storage and data services for Red Hat OpenShift Container Platform. Follow through [IBM Cloud docs to install OCS](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-prep) add-on to ROKS cluster 
 
+OCS storage cluster has 3 deployment approaches depending on how storage will be made available to the cluster:
+
+- Internal - dynamic storage : OCS dynamically provisions storage using the cloud provider's Storage class and sizes that are specified
+- Internal - attached local devices: In this approach, set of storage devices are attached to worker nodes and local storage operator (LSO) is installed to recognize the disks and make them ready for OCS deployment
+- External - This approach allows OCS to expose the Red Hat Ceph Storage services running outside of the OpenShift cluster as storage classes
+
+Read more about [storage deployment approaches](https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/planning_your_deployment/ocs-architecture_rhocs#storage-cluster-deployment-approaches_rhocs)
+
+> :exclamation: IBM Cloud add-on for OCS as of now, only supports `Internal - dynamic storage` mode which is a straight-forward approach to setup an OCS cluster. 
+
 > Below is a gist from the cloud docs and may not cover complete configuration. This is will help install basic OCS cluster. For details, refer the above cloud docs. 
 
 > Note the steps are only applicable to Managed OpenShift clusters (ROKS) on VPC infra on IBM Cloud
@@ -12,6 +22,7 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
 - [Installing the OpenShift Origin CLI (oc)](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cli_oc)
 - ROKS VPC cluster with minimum 3 16x64 workers (For HA, create workers in 3 different AZs). [Create managed OpenShift cluster on VPC infra](https://cloud.ibm.com/docs/openshift?topic=openshift-clusters#clusters_vpcg2)
 - [Login to the openshift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-access_cluster#access_public_se)
+
 
 
 ### Install OCS
