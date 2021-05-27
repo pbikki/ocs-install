@@ -12,7 +12,7 @@ Read more about [storage deployment approaches](https://access.redhat.com/docume
 
 > :exclamation: IBM Cloud add-on for OCS as of now, only supports `Internal - dynamic storage` mode which is a straight-forward approach to setup an OCS cluster. 
 
-> Below is a gist from the cloud docs and may not cover complete configuration. This is will help install basic OCS cluster. For details, refer the above cloud docs. 
+> Below is a gist from the cloud docs and may not cover complete configuration. This is will help install basic OCS cluster. For details, refer the [cloud docs](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-prep)
 
 > Note the steps are only applicable to Managed OpenShift clusters (ROKS) on VPC infra on IBM Cloud
 
