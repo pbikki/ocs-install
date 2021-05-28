@@ -5,16 +5,15 @@ Red Hat OpenShift Container Storage (OCS) is a highly integrated collection of c
 OCS storage cluster has 3 deployment approaches depending on how storage will be made available to the cluster:
 
 - **Internal - dynamic storage** : OCS dynamically provisions storage using the cloud provider's Storage class and sizes that are specified
-- **Internal - attached local devices**: In this approach, set of storage devices are attached to worker nodes and local storage operator (LSO) is installed to recognize the disks and make them ready for OCS deployment
+- **Internal - attached local devices**: In this approach, set of local disks are available on the nodes and local storage operator (LSO) is installed to recognize the disks and make them ready for OCS deployment
 - **External** - This approach allows OCS to expose the Red Hat Ceph Storage services running outside of the OpenShift cluster as storage classes
 
 Read more about [storage deployment approaches](https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/planning_your_deployment/ocs-architecture_rhocs#storage-cluster-deployment-approaches_rhocs)
 
-> :exclamation: IBM Cloud add-on for OCS as of now, only supports `Internal - dynamic storage` mode which is a straight-forward approach to setup an OCS cluster. 
+> :exclamation: IBM Cloud OCS add-on for VPC clusters,as of now, only supports `Internal - dynamic storage` mode which is a straight-forward approach to setup an OCS cluster. 
 
-> Below is a gist from the cloud docs and may not cover complete configuration. This is will help install basic OCS cluster. For details, refer the [cloud docs](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-prep)
+> `Internal - attached local devices` is supported on classic infra but not VPC as SDS node flavors are only available on classic infra as of now. Refer [Software-defined storage (SDS) machines](https://cloud.ibm.com/docs/openshift?topic=openshift-planning_worker_nodes#sds)
 
-> Note the steps are only applicable to Managed OpenShift clusters (ROKS) on VPC infra on IBM Cloud
 
 ### Preqrequisites
 
@@ -24,6 +23,9 @@ Read more about [storage deployment approaches](https://access.redhat.com/docume
 - [Login to the openshift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-access_cluster#access_public_se)
 
 
+> Steps in [Install OCS](#install-ocs) section is a gist from the cloud docs and may not cover complete configuration. This is will help install basic OCS cluster. For details, refer the [cloud docs](https://cloud.ibm.com/docs/openshift?topic=openshift-ocs-storage-prep)
+
+> :speaker: Note the steps are only applicable to Managed OpenShift clusters (ROKS) on VPC infra on IBM Cloud
 
 ### Install OCS
 
